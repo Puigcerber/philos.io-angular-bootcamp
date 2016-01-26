@@ -1,0 +1,14 @@
+{
+  "name": "angular-bootcamp-e2e",
+  "version": "1.0.0",
+  "description": "Example app for the Philos.io JavaScript & AngularJS Bootcamp.",
+  "authors": [
+    "Pablo Villoslada Puigcerber <pablo85@gmail.com> (http://pablovilloslada.com/)"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.9",
+    "bootstrap": "~3.3.6"
+  }
+}
