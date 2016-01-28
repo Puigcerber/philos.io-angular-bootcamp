@@ -5,9 +5,12 @@
   "author": "Pablo Villoslada Puigcerber <pablo85@gmail.com> (http://pablovilloslada.com/)",
   "scripts": {
     "start": "http-server src -p 3000",
-    "lint": "jshint src --exclude src/bower_components; true",
-    "test": "karma start",
-    "pretest": "npm run lint"
+    "lint": "jshint src e2e --exclude src/bower_components; true",
+    "test": "npm run test:unit && npm run test:e2e",
+    "pretest": "npm run lint",
+    "test:unit": "karma start",
+    "test:e2e": "protractor protractor.conf.js",
+    "pretest:e2e": "webdriver-manager update"
   },
   "license": "MIT",
   "private": true,
@@ -21,6 +24,7 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
-    "phantomjs": "^1.9.19"
+    "phantomjs": "^1.9.19",
+    "protractor": "^3.0.0"
   }
 }

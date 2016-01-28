@@ -52,7 +52,7 @@ describe('Component: playerList', function () {
       expect(angular.isFunction(controller.onPlayerClick)).toBe(true);
     });
 
-    it('should call the scoped onClick method when clicked', function() {
+    it('should call the scoped onClick method when the button is clicked', function() {
       var player = {
         name: 'Kevin De Bruyne'
       };

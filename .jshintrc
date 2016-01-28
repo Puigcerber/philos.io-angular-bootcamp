@@ -9,9 +9,13 @@
   "unused": true,
   "browser": true,
   "jasmine": true,
+  "node": true,
   "globals": {
     "angular": true,
     "module": true,
-    "inject": true
+    "inject": true,
+    "browser": true,
+    "element": true,
+    "by": true
   }
 }

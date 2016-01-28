@@ -16,7 +16,7 @@ function redDevils(Players) {
       '</div>',
       '<div class="row">',
       '<div class="col-md-6">',
-      '<h2>UEFA Euro 2016</h2>',
+      '<h2>{{ $ctrl.competition }}</h2>',
       '<player-list players="$ctrl.selectedPlayers" is-squad="true" on-player-click="$ctrl.unselectPlayer(player)"></player-list>',
       '</div>',
       '<div class="col-md-6">',
@@ -34,6 +34,7 @@ function redDevils(Players) {
     vm.players = [];
     vm.selectedPlayers = [];
     vm.search = '';
+    vm.competition = 'UEFA Euro 2016';
     vm.selectPlayer = selectPlayer;
     vm.unselectPlayer = unselectPlayer;
 
