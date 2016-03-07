@@ -13,6 +13,7 @@ module.exports = function(app) {
 
   if ('development' === env) {
     app.use(express.static(path.join(config.root, 'client')));
+    app.use('/scripts', express.static(path.join(config.root, 'node_modules')));
     app.set('appPath', 'client');
   }
 };

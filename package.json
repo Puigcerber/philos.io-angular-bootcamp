@@ -5,7 +5,7 @@
   "author": "Pablo Villoslada Puigcerber <pablo85@gmail.com> (http://pablovilloslada.com/)",
   "scripts": {
     "start": "node server",
-    "lint": "jshint client server e2e --exclude client/bower_components; true",
+    "lint": "jshint client server e2e; true",
     "test": "npm run test:unit && npm run test:e2e",
     "pretest": "npm run lint",
     "test:unit": "karma start",
@@ -15,7 +15,6 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "angular": "^1.4.9",
     "angular-mocks": "^1.4.9",
     "http-server": "^0.8.5",
     "jasmine-core": "^2.4.1",
@@ -28,7 +27,9 @@
     "protractor": "^3.0.0"
   },
   "dependencies": {
+    "angular": "^1.4.9",
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "lodash": "^4.6.1",
     "sequelize": "^3.19.3",
