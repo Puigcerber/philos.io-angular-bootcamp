@@ -18,14 +18,16 @@ describe('Component: redDevils', function () {
   ];
   beforeEach(module(function($provide) {
     Players = jasmine.createSpyObj('Players', ['getAll']);
-    Players.getAll.and.returnValue(angular.copy(players));
     $provide.value('Players', Players);
   }));
 
   var element;
   var scope;
-  beforeEach(inject(function($rootScope, $compile) {
+  var deferred;
+  beforeEach(inject(function($q, $rootScope, $compile) {
     scope = $rootScope.$new();
+    deferred = $q.defer();
+    Players.getAll.and.returnValue(deferred.promise);
     element = angular.element('<red-devils></red-devils>');
     element = $compile(element)(scope);
     scope.$apply();
@@ -44,6 +46,9 @@ describe('Component: redDevils', function () {
     var controller;
     beforeEach(function(){
       controller = element.controller('redDevils');
+      scope.$apply(function() {
+        deferred.resolve(angular.copy(players));
+      });
     });
 
     it('should do something', function() {

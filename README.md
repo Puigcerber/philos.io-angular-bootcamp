@@ -7,17 +7,10 @@ JavaScript & AngularJS Bootcamp in Brussels.
 
 We need to have [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/) previously installed.
 
-To manage client side dependencies we install [Bower](http://bower.io/).
-
-```
-$ npm install -g bower
-```
-
 And after cloning the repository we install the project dependencies.
 
 ```
 $ npm install
-$ bower install
 ```
 
 ## Usage

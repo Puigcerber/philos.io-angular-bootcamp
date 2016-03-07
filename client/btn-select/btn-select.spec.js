@@ -18,7 +18,7 @@ describe('Component: btnSelect', function () {
 
     it('should render the select button when set to true', function() {
       expect(element.text().trim()).toBe('Select');
-      expect(element.hasClass('btn-success')).toBe(true);
+      expect(element.find('button').hasClass('btn-success')).toBe(true);
       var icon = element.find('span');
       expect(icon.hasClass('glyphicon-plus')).toBe(true);
     });
@@ -27,7 +27,7 @@ describe('Component: btnSelect', function () {
       scope.isSelect = false;
       scope.$apply();
       expect(element.text().trim()).toBe('Unselect');
-      expect(element.hasClass('btn-danger')).toBe(true);
+      expect(element.find('button').hasClass('btn-danger')).toBe(true);
       var icon = element.find('span');
       expect(icon.hasClass('glyphicon-minus')).toBe(true);
     });

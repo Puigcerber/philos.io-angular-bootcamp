@@ -28,20 +28,20 @@ describe('Page: Red Devils', function () {
   });
 
   it('should select elements by repeater', function() {
-    expect(page.playerEls.count()).toBe(46);
+    expect(page.playerEls.count()).toBe(28);
     // NOTE: getText() includes sub-elements.
     expect(page.playerEls.first().getText()).toMatch(/Thibaut Courtois/);
   });
 
   it('should filter the list of available players', function() {
     expect(page.selectedPlayers.count()).toBe(0);
-    expect(page.availablePlayers.count()).toBe(46);
+    expect(page.availablePlayers.count()).toBe(28);
 
     page.search('Thibaut');
     expect(page.availablePlayers.count()).toBe(1);
 
     page.clearSearch();
-    page.search('Kevin');
+    page.search('Thomas');
     expect(page.availablePlayers.count()).toBe(2);
   });
 
@@ -49,7 +49,7 @@ describe('Page: Red Devils', function () {
     page.selectPlayerAt(0);
 
     expect(page.selectedPlayers.count()).toBe(1);
-    expect(page.availablePlayers.count()).toBe(45);
+    expect(page.availablePlayers.count()).toBe(27);
 
     expect(page.selectedPlayers.first().getText()).toMatch(/Thibaut Courtois/);
     expect(page.availablePlayers.first().getText()).toMatch(/Simon Mignolet/);
@@ -59,12 +59,12 @@ describe('Page: Red Devils', function () {
     page.selectPlayerAt(0);
 
     expect(page.selectedPlayers.count()).toBe(1);
-    expect(page.availablePlayers.count()).toBe(45);
+    expect(page.availablePlayers.count()).toBe(27);
 
     page.unselectPlayerAt(0);
 
     expect(page.selectedPlayers.count()).toBe(0);
-    expect(page.availablePlayers.count()).toBe(46);
+    expect(page.availablePlayers.count()).toBe(28);
 
     expect(page.availablePlayers.first().getText()).toMatch(/Simon Mignolet/);
     expect(page.availablePlayers.last().getText()).toMatch(/Thibaut Courtois/);
@@ -74,7 +74,7 @@ describe('Page: Red Devils', function () {
     page.availablePlayers.each(function(playerEl) {
       playerEl.element(by.tagName('button')).click();
     });
-    expect(page.selectedPlayers.count()).toBe(46);
+    expect(page.selectedPlayers.count()).toBe(28);
     expect(page.availablePlayers.count()).toBe(0);
   });
 
