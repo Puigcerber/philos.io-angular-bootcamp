@@ -18,13 +18,13 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'src/**/*.js'
+      'client/**/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'src/bower_components/**/*.js'
+      'client/bower_components/**/*.js'
     ],
 
 

@@ -4,8 +4,8 @@
   "description": "Example app for the Philos.io JavaScript & AngularJS Bootcamp.",
   "author": "Pablo Villoslada Puigcerber <pablo85@gmail.com> (http://pablovilloslada.com/)",
   "scripts": {
-    "start": "http-server src -p 3000",
-    "lint": "jshint src e2e --exclude src/bower_components; true",
+    "start": "node server",
+    "lint": "jshint client server e2e --exclude client/bower_components; true",
     "test": "npm run test:unit && npm run test:e2e",
     "pretest": "npm run lint",
     "test:unit": "karma start",
@@ -26,5 +26,12 @@
     "karma-phantomjs-launcher": "^0.2.3",
     "phantomjs": "^1.9.19",
     "protractor": "^3.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "lodash": "^4.6.1",
+    "sequelize": "^3.19.3",
+    "sqlite3": "^3.1.1"
   }
 }
