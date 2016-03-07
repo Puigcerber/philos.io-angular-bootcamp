@@ -1,6 +1,6 @@
 {
   "name": "angular-bootcamp-e2e",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Example app for the Philos.io JavaScript & AngularJS Bootcamp.",
   "author": "Pablo Villoslada Puigcerber <pablo85@gmail.com> (http://pablovilloslada.com/)",
   "scripts": {
@@ -15,19 +15,19 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "angular-mocks": "^1.4.9",
+    "angular-mocks": "^1.5.0",
     "http-server": "^0.8.5",
     "jasmine-core": "^2.4.1",
     "jshint": "^2.9.1",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.3",
-    "phantomjs": "^1.9.19",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.4",
     "protractor": "^3.0.0"
   },
   "dependencies": {
-    "angular": "^1.4.9",
+    "angular": "^1.5.0",
     "body-parser": "^1.15.0",
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",

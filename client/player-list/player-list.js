@@ -1,20 +1,13 @@
 'use strict';
 
 angular.module('webApp.playerList', ['webApp.btnSelect'])
-  .directive('playerList', playerList);
-
-function playerList() {
-  return {
-    bindToController: {
+  .component('playerList', {
+    bindings: {
       players: '=',
       isSquad: '=',
       onPlayerClick: '&',
       search: '='
     },
-    controller: function() {},
-    controllerAs: '$ctrl',
-    restrict: 'E',
-    scope: {},
     template: [
       '<ul class="list-group">',
       '<li class="list-group-item" ng-repeat="player in $ctrl.players | filter:$ctrl.search">',
@@ -23,7 +16,4 @@ function playerList() {
       '</li>',
       '</ul>'
     ].join('')
-  };
-
-}
-
+  });

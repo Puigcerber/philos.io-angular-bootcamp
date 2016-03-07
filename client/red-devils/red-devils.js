@@ -3,13 +3,8 @@
 angular.module('webApp.redDevils', [
   'webApp.players',
   'webApp.playerList'
-]).directive('redDevils', redDevils);
-
-function redDevils(Players) {
-  return {
+]).component('redDevils', {
     controller: redDevilsCtrl,
-    controllerAs: '$ctrl',
-    restrict: 'E',
     template: [
       '<div class="page-header">',
       '<h1>Belgian Red Devils <small>Philos.io Bootcamp</small></h1>',
@@ -26,42 +21,39 @@ function redDevils(Players) {
       '</div>',
       '</div>'
     ].join('')
+  });
+
+function redDevilsCtrl(Players) {
+  /*jshint validthis: true */
+  var vm = this;
+  vm.players = [];
+  vm.selectedPlayers = [];
+  vm.search = '';
+  vm.competition = 'UEFA Euro 2016';
+  vm.selectPlayer = selectPlayer;
+  vm.unselectPlayer = unselectPlayer;
+
+  vm.$onInit = function () {
+    return Players.getAll().then(function(data) {
+      vm.players = data;
+      return vm.players;
+    });
   };
 
-  function redDevilsCtrl() {
-    /*jshint validthis: true */
-    var vm = this;
-    vm.players = [];
-    vm.selectedPlayers = [];
-    vm.search = '';
-    vm.competition = 'UEFA Euro 2016';
-    vm.selectPlayer = selectPlayer;
-    vm.unselectPlayer = unselectPlayer;
-
-    function activate() {
-      return Players.getAll().then(function(data) {
-        vm.players = data;
-        return vm.players;
-      });
+  function selectPlayer(player) {
+    vm.selectedPlayers.push(player);
+    var index = vm.players.indexOf(player);
+    if(index > -1) {
+      vm.players.splice(index, 1);
     }
-
-    function selectPlayer(player) {
-      vm.selectedPlayers.push(player);
-      var index = vm.players.indexOf(player);
-      if(index > -1) {
-        vm.players.splice(index, 1);
-      }
-    }
-
-    function unselectPlayer(player) {
-      vm.players.push(player);
-      var index = vm.selectedPlayers.indexOf(player);
-      if(index > -1) {
-        vm.selectedPlayers.splice(index, 1);
-      }
-    }
-
-    activate();
   }
-}
 
+  function unselectPlayer(player) {
+    vm.players.push(player);
+    var index = vm.selectedPlayers.indexOf(player);
+    if(index > -1) {
+      vm.selectedPlayers.splice(index, 1);
+    }
+  }
+
+}
