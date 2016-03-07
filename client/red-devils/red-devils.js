@@ -39,8 +39,10 @@ function redDevils(Players) {
     vm.unselectPlayer = unselectPlayer;
 
     function activate() {
-      vm.players = Players.getAll();
-      return vm.players;
+      return Players.getAll().then(function(data) {
+        vm.players = data;
+        return vm.players;
+      });
     }
 
     function selectPlayer(player) {
