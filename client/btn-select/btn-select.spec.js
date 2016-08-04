@@ -10,8 +10,9 @@ describe('Component: btnSelect', function () {
     scope = $rootScope.$new();
     element = angular.element('<btn-select is-select="isSelect"></btn-select>');
     element = $compile(element)(scope);
-    scope.isSelect = true;
-    scope.$apply();
+    scope.$apply(function() {
+      scope.isSelect = true;
+    });
   }));
 
   describe('Property: isSelect', function () {
@@ -24,8 +25,9 @@ describe('Component: btnSelect', function () {
     });
 
     it('should render the unselect button when set to false', function() {
-      scope.isSelect = false;
-      scope.$apply();
+      scope.$apply(function() {
+        scope.isSelect = false;
+      });
       expect(element.text().trim()).toBe('Unselect');
       expect(element.find('button').hasClass('btn-danger')).toBe(true);
       var icon = element.find('span');

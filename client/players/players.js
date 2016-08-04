@@ -13,7 +13,7 @@ function Players($q, $http, API_URL) {
           return response.data;
         })
         .catch(function(error) {
-          return $q.reject(error);
+          return $q.reject(error.status);
         });
     }
   };

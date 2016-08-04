@@ -32,20 +32,29 @@ describe('Service: Players', function () {
         { id: 1, name: 'Thibaut', surname:'Courtois', countryId:'BE'},
         { id: 2, name: 'Simon', surname: 'Mignolet', countryId:'BE'}
       ];
-      var actualPlayers = [];
       var handler = jasmine.createSpyObj('handler', ['success', 'error']);
-      handler.success.and.callFake(function(data) {
-        actualPlayers = data;
-      });
-
       httpBackend.expectGET(/\/api\/players/).respond(players);
+
       Players.getAll().then(handler.success, handler.error);
       httpBackend.flush();
 
-      expect(actualPlayers).toEqual(players);
       expect(handler.success).toHaveBeenCalled();
+      expect(handler.success).toHaveBeenCalledWith(players);
       expect(handler.success.calls.count()).toBe(1);
       expect(handler.error).not.toHaveBeenCalled();
+    });
+
+    it('should return the error status when it fails', function() {
+      var handler = jasmine.createSpyObj('handler', ['success', 'error']);
+      httpBackend.whenGET(/\/api\/players/).respond(404);
+
+      Players.getAll().then(handler.success, handler.error);
+      httpBackend.flush();
+
+      expect(handler.error).toHaveBeenCalled();
+      expect(handler.error).toHaveBeenCalledWith(404);
+      expect(handler.error.calls.count()).toBe(1);
+      expect(handler.success).not.toHaveBeenCalled();
     });
 
   });

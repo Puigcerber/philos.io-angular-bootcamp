@@ -10,18 +10,19 @@ describe('Component: playerList', function () {
     scope = $rootScope.$new();
     element = angular.element('<player-list players="players" search="search" is-squad="isSquad" on-player-click="onClick(player)"></player-list>');
     element = $compile(element)(scope);
-    scope.players = [
-      {
-        name: 'Thibaut Courtois'
-      },
-      {
-        name: 'Eden Hazard'
-      }
-    ];
-    scope.isSquad = true;
-    scope.onClick = jasmine.createSpy('onClick');
-    scope.search = '';
-    scope.$apply();
+    scope.$apply(function() {
+      scope.players = [
+        {
+          name: 'Thibaut Courtois'
+        },
+        {
+          name: 'Eden Hazard'
+        }
+      ];
+      scope.isSquad = true;
+      scope.onClick = jasmine.createSpy('onClick');
+      scope.search = '';
+    });
   }));
 
   it('should render a list of players', function() {
@@ -62,8 +63,9 @@ describe('Component: playerList', function () {
     });
 
     it('should filter the list when a search query is passed', function() {
-      scope.search = 'Courtois';
-      scope.$apply();
+      scope.$apply(function() {
+        scope.search = 'Courtois';
+      });
       var players = element.find('ul').find('li');
       expect(players.length).toBe(1);
     });
